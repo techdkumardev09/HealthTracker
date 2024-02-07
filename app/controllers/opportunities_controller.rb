@@ -57,7 +57,11 @@ class OpportunitiesController < ApplicationController
   end
 
   def opportunity_params
-    params.require(:opportunity).permit(:procedure_name, :patient_id, :doctor_id, stage_history: [])
+    params.require(:opportunity).permit(:procedure_name, :patient_id, :doctor_id, stage_history: [:stage_name, :timestamp]).tap do |processed_params|
+      stage_history = processed_params[:stage_history]
+  
+      stage_history&.each { |history| history[:timestamp] = history[:timestamp].to_datetime if history[:timestamp].present? }
+    end
   end
 
   def transition(current_stage)
