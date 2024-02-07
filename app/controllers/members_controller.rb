@@ -9,6 +9,14 @@ class MembersController < ApplicationController
     end
   end
 
+  def doctors
+    render json: Member.doctor, each_serializer: MemberSerializer, status: :ok
+  end
+
+  def patients
+    render json: Member.patient, each_serializer: MemberSerializer, status: :ok
+  end
+
   private
 
   def member_params
