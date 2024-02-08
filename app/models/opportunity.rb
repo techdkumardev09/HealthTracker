@@ -21,4 +21,28 @@ class Opportunity < ApplicationRecord
   def doctor_name
     doctor.full_name if doctor.present?
   end
+
+  def transition
+    next_stage = next_stage(current_stage)
+    return true if next_stage == current_stage
+    stage_history << { stage_name: next_stage, timestamp: Time.current }
+    save
+  end
+
+  def next_stage(current_stage_name)
+    case current_stage_name
+    when 'lead'
+      'qualified'
+    when 'qualified'
+      'booked'
+    when 'booked'
+      'treated'
+    else
+      current_stage_name
+    end
+  end
+
+  def current_stage
+    stage_history&.last&.dig("stage_name")
+  end
 end

@@ -1,24 +1,46 @@
-# README
+# Health Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Health Tracker is a web application, managing members (doctors and patients) and healthcare opportunities. The application is designed to keep track of patient-doctor interactions, procedures, and stages of healthcare opportunities.
 
-Things you may want to cover:
+## Rails Setup
 
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/techdkumardev09/HealthTracker.git
+   cd HealthTracker
+   ```
+2. **Install Dependencies:**
 * Ruby version
+  3.0.0
 
-* System dependencies
+* Rails version
+  7.0.8
 
-* Configuration
+* bundle install command
+  ```
+  bundle install
+  ```
+* Create database
+  ```
+  rake db:create
+  ```
+  
+* Run migration
+  ```
+  rake db:migrate
+  ```
 
-* Database creation
+* To start the server
+  ```
+  rails s
+  ```
 
-* Database initialization
+* To run the rspecs
+  ```
+  rspec
+  ```
 
-* How to run the test suite
+# TOOLS USED
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rspecs for test cases.
+* PostgreSQL Database Used
